@@ -24,10 +24,18 @@ View aboutPage = new AboutPage(this)
 ```
 
 ## Setup
-Available on Jcenter, Maven and JitPack
+Available on JitPack
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+
 
 ```groovy
-compile 'com.github.medyo:android-about-page:1.1.1'
+compile 'com.github.ichurkin:android-about-page:1.1.13'
 ```
 
 
@@ -35,7 +43,10 @@ compile 'com.github.medyo:android-about-page:1.1.1'
 ### 1. Add Description
 
 ```java
-setDescription(String)
+setDescription(HTMLString)
+check supported tags here
+https://github.com/SufficientlySecure/html-textview
+
 ```
 
 ### 2. Add Image
