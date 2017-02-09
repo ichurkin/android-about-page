@@ -25,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
                 .setImage(R.drawable.dummy_image)
+                .setDescription("<h1>H1 title</h1>" + //
+                        "<ul>" +
+                        "<li>one</li>" +
+                        "<li>two</li>" +
+                        "</ul>"
+                )
                 .addItem(new Element().setTitle("Version 6.2"))
                 .addItem(adsElement)
                 .addGroup("Connect with us")

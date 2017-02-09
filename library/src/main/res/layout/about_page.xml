@@ -5,7 +5,12 @@
     <LinearLayout style="@style/about_About.wrapper">
         <LinearLayout style="@style/about_sub_wrapper">
             <ImageView android:id="@+id/image" style="@style/about_image"/>
-            <TextView android:id="@+id/description" style="@style/about_description"/>
+            <org.sufficientlysecure.htmltextview.HtmlTextView
+                android:id="@+id/description"
+                style="@style/about_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
         </LinearLayout>
 
         <View style="@style/about_separator"/>

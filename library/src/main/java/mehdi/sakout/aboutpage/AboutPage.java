@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+
 /**
  * Created by medyo on 3/25/16.
  */
@@ -29,6 +31,7 @@ public class AboutPage {
     private final LayoutInflater mInflater;
     private final View mView;
     private String mDescription;
+    private ImageGetterProvider mImageGetterProvider;
     private int mImage = 0;
     private boolean mIsRTL = false;
     private Typeface mCustomFont;
@@ -288,18 +291,25 @@ public class AboutPage {
         return this;
     }
 
+    public AboutPage setImageGetterProvider(ImageGetterProvider imageGetterProvider) {
+        this.mImageGetterProvider = imageGetterProvider;
+        return this;
+    }
+
     public View create() {
-        TextView description = (TextView) mView.findViewById(R.id.description);
+        HtmlTextView description = (HtmlTextView) mView.findViewById(R.id.description);
         ImageView image = (ImageView) mView.findViewById(R.id.image);
         if (mImage > 0) {
             image.setImageResource(mImage);
         }
 
         if (!TextUtils.isEmpty(mDescription)) {
-            description.setText(mDescription);
+            if (mImageGetterProvider == null) {
+                description.setHtml(mDescription);
+            } else {
+                description.setHtml(mDescription, mImageGetterProvider.privideImageGetter(description));
+            }
         }
-
-        description.setGravity(Gravity.CENTER);
 
         if (mCustomFont != null) {
             description.setTypeface(mCustomFont);
@@ -365,7 +375,7 @@ public class AboutPage {
 
             Drawable wrappedDrawable = DrawableCompat.wrap(iconView.getDrawable());
             wrappedDrawable = wrappedDrawable.mutate();
-            if (element.getAutoIconColor()){
+            if (element.getAutoIconColor()) {
                 if (element.getColor() != null) {
                     DrawableCompat.setTint(wrappedDrawable, element.getColor());
                 } else {
