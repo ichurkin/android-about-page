@@ -3,7 +3,8 @@ Create an awesome About Page for your Android App in 2 minutes
 
 <img src="/resources/cover.png" width="80%" alt="Android About Page Cover"/>
 
-This library allows to generate beautiful About Pages with less effort, it's fully customizable and supports opening specific intent
+This library allows to generate beautiful About Pages with less effort, it's fully customizable and supports opening specific intent.
+Added simple HTML tags support for description.
 
 ```java
 View aboutPage = new AboutPage(this)
@@ -25,13 +26,15 @@ View aboutPage = new AboutPage(this)
 
 ## Setup
 Available on JitPack
+
+```groovy
 allprojects {
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }
     }
 }
-
+```
 
 
 ```groovy
@@ -44,10 +47,11 @@ compile 'com.github.ichurkin:android-about-page:1.1.13'
 
 ```java
 setDescription(HTMLString)
-check supported tags here
-https://github.com/SufficientlySecure/html-textview
-
 ```
+Check supported tags here
+[SufficientlySecure/html-textview/](https://github.com/SufficientlySecure/html-textview/)
+
+
 
 ### 2. Add Image
 ```java
