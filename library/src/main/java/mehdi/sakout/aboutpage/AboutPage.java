@@ -77,27 +77,31 @@ public class AboutPage {
 
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
-        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        //IC: does not work sometimes, more safe to just open URL
 
-        if (AboutPageUtils.isAppInstalled(mContext, "com.facebook.katana")) {
-            intent.setPackage("com.facebook.katana");
-            int versionCode = 0;
-            try {
-                versionCode = mContext.getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-            }
+//        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+//
+//        if (AboutPageUtils.isAppInstalled(mContext, "com.facebook.katana")) {
+//            intent.setPackage("com.facebook.katana");
+//            int versionCode = 0;
+//            try {
+//                versionCode = mContext.getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;
+//            } catch (PackageManager.NameNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//
+//            if (versionCode >= 3002850) {
+//                Uri uri = Uri.parse("fb://facewebmodal/f?href=" + "http://m.facebook.com/" + id);
+//                intent.setData(uri);
+//            } else {
+//                Uri uri = Uri.parse("fb://page/" + id);
+//                intent.setData(uri);
+//            }
+//        } else {
+//            intent.setData(Uri.parse("http://m.facebook.com/" + id));
+//        }
 
-            if (versionCode >= 3002850) {
-                Uri uri = Uri.parse("fb://facewebmodal/f?href=" + "http://m.facebook.com/" + id);
-                intent.setData(uri);
-            } else {
-                Uri uri = Uri.parse("fb://page/" + id);
-                intent.setData(uri);
-            }
-        } else {
-            intent.setData(Uri.parse("http://m.facebook.com/" + id));
-        }
+        intent.setData(Uri.parse("https://www.facebook.com/" + id));
 
         facebookElement.setIntent(intent);
 
